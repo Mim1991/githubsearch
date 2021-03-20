@@ -39,6 +39,18 @@ const UserInfo = () => {
     },
   ];
 
+  const Item = ({ icon, label, value, color }) => {
+    return (
+      <article className="item">
+        <span className={color}>{icon}</span>
+        <div>
+          <h3>{value}</h3>
+          <p>{label}</p>
+        </div>
+      </article>
+    );
+  };
+
   return (
     <section className="section">
       <Wrapper className="section-center">
@@ -47,18 +59,6 @@ const UserInfo = () => {
         })}
       </Wrapper>
     </section>
-  );
-};
-
-const Item = ({ icon, label, value, color }) => {
-  return (
-    <article className="item">
-      <span className={color}>{icon}</span>
-      <div>
-        <h3>{value}</h3>
-        <p>{label}</p>
-      </div>
-    </article>
   );
 };
 

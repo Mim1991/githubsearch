@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { GithubContext } from "../context/context";
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
+import { Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
+
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
 
@@ -14,13 +15,13 @@ const Repos = () => {
     } else {
       total[language] = {
         ...total[language],
-
         value: total[language].value + 1,
         stars: total[language].stars + stargazers_count,
       };
     }
     return total;
   }, {});
+
   // Turn to array and sort by highest. Only take top 5 languages
   const mostUsed = Object.values(languages)
     .sort((a, b) => {
@@ -28,6 +29,7 @@ const Repos = () => {
     })
     .slice(0, 5);
 
+  // Turn most popular to array, sort, take star count and top 5
   const mostPopular = Object.values(languages)
     .sort((a, b) => {
       return b.stars - a.stars;
@@ -37,6 +39,7 @@ const Repos = () => {
     })
     .slice(0, 5);
 
+  //
   let { stars, forks } = repos.reduce(
     (total, item) => {
       const { stargazers_count, name, forks } = item;
@@ -49,9 +52,9 @@ const Repos = () => {
       forks: {},
     }
   );
+
   stars = Object.values(stars).slice(-5).reverse();
   forks = Object.values(stars).slice(-5).reverse();
-  console.log(forks);
 
   return (
     <section className="section">

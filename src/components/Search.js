@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
 import { GithubContext } from "../context/context";
+
 const Search = () => {
   const [user, setUser] = React.useState("");
-  // will give the number of requests left
   const { requests, error, searchGithubUser, isLoading } = React.useContext(
     GithubContext
   );
@@ -24,6 +24,7 @@ const Search = () => {
             <p>{error.msg}</p>
           </ErrorWrapper>
         )}
+
         <form onSubmit={handleSubmit}>
           <div className="form-control">
             <MdSearch />
@@ -38,6 +39,7 @@ const Search = () => {
             )}
           </div>
         </form>
+
         <h3>requests : {requests} / 60</h3>
       </Wrapper>
     </section>

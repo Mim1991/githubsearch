@@ -2,6 +2,7 @@ import React from "react";
 import { GithubContext } from "../context/context";
 import styled from "styled-components";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
+
 const Card = () => {
   const { githubUser } = React.useContext(GithubContext);
   const {
@@ -14,13 +15,14 @@ const Card = () => {
     location,
     twitter_username,
   } = githubUser;
+
   return (
     <Wrapper>
       <header>
         <img src={avatar_url} alt={name} />
         <div>
           <h4>{name}</h4>
-          <p>@{twitter_username || "ihatetwitter"}</p>
+          <p>@{twitter_username || "idonthavetwitter"}</p>
         </div>
         <a href={html_url}>follow</a>
       </header>
