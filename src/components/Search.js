@@ -19,6 +19,7 @@ const Search = () => {
   return (
     <section className="section">
       <Wrapper className="section-center">
+        // Error set to true    
         {error.show && (
           <ErrorWrapper>
             <p>{error.msg}</p>
@@ -34,6 +35,7 @@ const Search = () => {
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
+            // Hide the search button on conditionals
             {requests > 0 && !isLoading && (
               <button type="submit">search</button>
             )}
