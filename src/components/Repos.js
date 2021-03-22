@@ -5,7 +5,7 @@ import { Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
 
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
-
+  // console.log(repos);
   let languages = repos.reduce((total, item) => {
     const { language, stargazers_count } = item;
     if (!language) return total;
@@ -13,31 +13,38 @@ const Repos = () => {
     if (!total[language]) {
       total[language] = { label: language, value: 1, stars: stargazers_count };
     } else {
+      // Otherwie add 1 to value of language and add new stargazers count to exisitng total
       total[language] = {
         ...total[language],
         value: total[language].value + 1,
         stars: total[language].stars + stargazers_count,
       };
     }
+    // console.log(total);
+    // language as keys with lavel, value, stargazer
     return total;
   }, {});
 
   // Turn to array and sort by highest. Only take top 5 languages
   const mostUsed = Object.values(languages)
     .sort((a, b) => {
+      // Returns an object with hash and value key inside
       return b.value - a.value;
     })
     .slice(0, 5);
 
-  // Turn most popular to array, sort, take star count and top 5
+  // create array, sort, take star count and top 5
   const mostPopular = Object.values(languages)
     .sort((a, b) => {
       return b.stars - a.stars;
     })
     .map((item) => {
+      console.log(item);
+      // set value to starcount
       return { ...item, value: item.stars };
     })
     .slice(0, 5);
+  // console.log(mostPopular);
 
   //
   let { stars, forks } = repos.reduce(
@@ -45,6 +52,7 @@ const Repos = () => {
       const { stargazers_count, name, forks } = item;
       total.stars[stargazers_count] = { label: name, value: stargazers_count };
       total.forks[forks] = { label: name, value: forks };
+      console.log(total);
       return total;
     },
     {
@@ -53,9 +61,9 @@ const Repos = () => {
     }
   );
 
-  //
+  // take top 5, need to reverse
   stars = Object.values(stars).slice(-5).reverse();
-  forks = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
 
   return (
     <section className="section">

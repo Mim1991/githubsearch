@@ -14,7 +14,7 @@ const ChartComponent = ({ data }) => {
     dataFormat: "json",
     dataSource: {
       chart: {
-        caption: "Languages",
+        caption: "Stars per Languages",
         doghnutRadius: "40%",
         showPercentValues: 0,
         decimals: 0,
