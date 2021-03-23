@@ -10,7 +10,6 @@ function App() {
           <Route path="/" exact={true}>
             <Dashboard></Dashboard>
           </Route>
-
           <Route path="*">
             <Error />
           </Route>

@@ -47,6 +47,7 @@ const GithubProvider = ({ children }) => {
   const checkRequests = () => {
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
+        // console.log(data);
         let {
           rate: { remaining },
         } = data;
@@ -62,7 +63,7 @@ const GithubProvider = ({ children }) => {
     setError({ show, msg });
   }
 
-  // error
+  // run once after rendering, infinite loop otherwise
   useEffect(checkRequests, []);
 
   return (
@@ -81,7 +82,5 @@ const GithubProvider = ({ children }) => {
     </GithubContext.Provider>
   );
 };
-
-// need to export both functions as we need access
 
 export { GithubProvider, GithubContext };

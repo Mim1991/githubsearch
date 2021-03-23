@@ -39,7 +39,7 @@ const Repos = () => {
       return b.stars - a.stars;
     })
     .map((item) => {
-      console.log(item);
+      // console.log(item);
       // set value to starcount
       return { ...item, value: item.stars };
     })
@@ -52,7 +52,7 @@ const Repos = () => {
       const { stargazers_count, name, forks } = item;
       total.stars[stargazers_count] = { label: name, value: stargazers_count };
       total.forks[forks] = { label: name, value: forks };
-      console.log(total);
+      // console.log(total);
       return total;
     },
     {
